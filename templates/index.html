@@ -8,8 +8,11 @@
 <body>
     <h1>DNSSEC Trace Validator</h1>
     <form id="query-form">
-        <input type="text" id="domain" placeholder="Enter domain to validate DNSSEC" required>
-        <button type="submit">Validate DNSSEC</button>
+        <div class="input-group">
+            <input type="text" id="resolver" placeholder="DNS Resolver IP (optional)" value="34.27.111.125">
+            <input type="text" id="domain" placeholder="Enter domain to validate DNSSEC" required>
+            <button type="submit">Validate DNSSEC</button>
+        </div>
     </form>
     <div id="results"></div>
     <script src="/static/script.js"></script>
