@@ -60,8 +60,4 @@ def parse_dig_output(output):
     return trace_data
 
 if __name__ == '__main__':
-<<<<<<< HEAD:dnssec/app.py
     app.run(host='0.0.0.0', port=5000, debug=True)
-=======
-    app.run(debug=True)
->>>>>>> fa3ce8052ab134038908a4849f9a74b55a9dcf70:app.py
