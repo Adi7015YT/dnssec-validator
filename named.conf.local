@@ -1,0 +1,40 @@
+// named.conf.local
+
+// View for handling RESINFO records (MUST be first)
+view "resinfo-view" {
+    match-clients { any; };
+    match-recursive-only no;
+
+    // Zone to handle the RESINFO request
+    zone "." IN {
+        type master;
+        file "/etc/bind/db.resolverinfo";
+        allow-query { any; };         // Allow all clients to query the RESINFO data
+        allow-update { none; };       // No dynamic updates allowed
+        inline-signing yes;           // Enable inline signing for DNSSEC
+    };
+
+    // Specific zone for example.com, which may also contain a RESINFO record
+    zone "example.com" {
+        type master;
+        file "/etc/bind/db.example.com";
+        allow-query { any; };         // Ensure queries for example.com work as expected
+        allow-update { any; };        // Allows updates for this zone (can be restricted)
+        inline-signing yes;           // Enable inline signing for DNSSEC
+    };
+};
+
+// View for default resolution
+view "default-view" {
+    match-clients { any; };
+    recursion yes;                     // Enable recursion for normal queries
+
+    // Root zone file for typical DNS resolution
+    zone "." IN {
+        type master;
+        file "/etc/bind/db.forward";
+        allow-query { any; };         // Allow all clients to query the root hints
+        allow-update { none; };       // No updates to root hints
+        inline-signing yes;           // Enable inline signing for DNSSEC
+    };
+};

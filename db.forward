@@ -1,0 +1,20 @@
+$TTL 3600
+@       IN      SOA     localhost. root.localhost. (
+                        1         ; Serial
+                        3600      ; Refresh
+                        3600      ; Retry
+                        604800    ; Expire
+                        3600 )    ; Minimum TTL
+
+; Add localhost record
+localhost.      IN      A       127.0.0.1
+
+; Cloudflare nameservers and their addresses
+@               IN      NS      dns1.cloudflare.com.
+@               IN      NS      dns2.cloudflare.com.
+dns1.cloudflare.com.    IN      A       162.159.0.1
+dns2.cloudflare.com.    IN      A       162.159.0.2
+
+; Cloudflare DNS resolvers
+@               IN      A       1.1.1.1
+@               IN      A       1.0.0.1

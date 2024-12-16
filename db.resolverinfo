@@ -1,0 +1,17 @@
+$TTL 7200
+@       IN      SOA     localhost. root.localhost. (
+                        2         ; Serial
+                        3600      ; Refresh
+                        3600      ; Retry
+                        604800    ; Expire
+                        3600 )    ; Minimum TTL
+
+; Add localhost record
+localhost.      IN      A       127.0.0.1
+
+; NS record
+@               IN      NS      localhost.
+
+; RESINFO records
+@               IN      RESINFO qnamemin exterr=15-17 infourl=https://resolver.example.com/guide
+*               IN      RESINFO qnamemin exterr=15-17 infourl=https://resolver.example.com/guide

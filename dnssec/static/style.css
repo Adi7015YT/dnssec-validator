@@ -13,19 +13,26 @@ h1 {
     padding-bottom: 10px;
 }
 
-form {
+.input-group {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-input {
-    flex-grow: 1;
-    max-width: 400px;
+.input-group input {
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.input-group input:first-child {
+    flex-basis: 200px;
+}
+
+.input-group input:nth-child(2) {
+    flex-grow: 1;
+    max-width: 400px;
 }
 
 button {

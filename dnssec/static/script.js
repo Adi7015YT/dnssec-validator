@@ -1,13 +1,17 @@
 document.getElementById('query-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const domain = document.getElementById('domain').value;
+    const resolver = document.getElementById('resolver').value || '34.27.111.125';
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '<p>Tracing DNSSEC...</p>';
     
     fetch('/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain: domain })
+        body: JSON.stringify({ 
+            domain: domain,
+            resolver: resolver 
+        })
     })
     .then(response => response.json())
     .then(data => {
